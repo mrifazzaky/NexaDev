@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXADEV - Website Profesional untuk UMKM Indonesia</title>
+    <meta name="description" content="Jasa pembuatan website dan digital marketing khusus UMKM. Profesional, terjangkau, dan terpercaya. Mulai dari Rp1.500.000">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #13131a;
+            --bg-card: #1a1a24;
+            --accent-primary: #00d4ff;
+            --accent-secondary: #00ff94;
+            --accent-warm: #ff6b35;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b8;
+            --text-muted: #6b6b80;
+            --border-color: #2a2a35;
+            --glow-cyan: rgba(0, 212, 255, 0.3);
+            --glow-green: rgba(0, 255, 148, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Sora', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes glow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+
+        /* Background Effects */
+        .bg-gradient-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .orb-1 {
+            width: 600px;
+            height: 600px;
+            background: var(--accent-primary);
+            top: -200px;
+            right: -200px;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .orb-2 {
+            width: 500px;
+            height: 500px;
+            background: var(--accent-secondary);
+            bottom: -150px;
+            left: -150px;
+            animation: float 25s ease-in-out infinite reverse;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 20px 0;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Sora', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-cta {
+            padding: 12px 28px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border: none;
+            border-radius: 50px;
+            color: var(--bg-primary);
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px var(--glow-cyan);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid var(--accent-primary);
+            border-radius: 50px;
+            color: var(--accent-primary);
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 6vw, 72px);
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #ffffff, var(--accent-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(18px, 2vw, 22px);
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        .cta-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 40px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border: none;
+            border-radius: 50px;
+            color: var(--bg-primary);
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.3);
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(0, 212, 255, 0.5);
+        }
+
+        .cta-icon {
+            font-size: 24px;
+        }
+
+        /* Trust Section */
+        .trust-section {
+            position: relative;
+            padding: 80px 0;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .trust-item {
+            padding: 30px;
+        }
+
+        .trust-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+
+        .trust-item h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .trust-item p {
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        /* Section Styles */
+        section {
+            position: relative;
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(0, 255, 148, 0.1);
+            border: 1px solid var(--accent-secondary);
+            border-radius: 50px;
+            color: var(--accent-secondary);
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            font-size: clamp(36px, 5vw, 52px);
+            margin-bottom: 20px;
+        }
+
+        .section-description {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Problem Section */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .problem-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 40px 30px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .problem-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-warm), transparent);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .problem-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-warm);
+            box-shadow: 0 20px 60px rgba(255, 107, 53, 0.2);
+        }
+
+        .problem-number {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--accent-warm);
+            opacity: 0.3;
+            margin-bottom: 16px;
+        }
+
+        .problem-card h3 {
+            font-size: 22px;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .problem-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 50px 40px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+
+        .service-card:hover::after {
+            opacity: 0.05;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 25px 70px var(--glow-cyan);
+        }
+
+        .service-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 10px 30px var(--glow-cyan);
+        }
+
+        .service-price {
+            text-align: right;
+        }
+
+        .price-label {
+            font-size: 13px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .price-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--accent-secondary);
+            margin-top: 4px;
+        }
+
+        .service-card h3 {
+            font-size: 26px;
+            margin-bottom: 16px;
+        }
+
+        .service-description {
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            font-size: 16px;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .service-features li {
+            padding: 10px 0;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 15px;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            color: var(--accent-secondary);
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .service-cta {
+            width: 100%;
+            padding: 16px;
+            background: transparent;
+            border: 2px solid var(--accent-primary);
+            border-radius: 12px;
+            color: var(--accent-primary);
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .service-cta:hover {
+            background: var(--accent-primary);
+            color: var(--bg-primary);
+            transform: translateY(-2px);
+        }
+
+        /* Workflow Section */
+        .workflow-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .workflow-steps {
+            display: grid;
+            gap: 30px;
+        }
+
+        .workflow-step {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--bg-primary);
+            box-shadow: 0 10px 30px var(--glow-cyan);
+        }
+
+        .step-content {
+            padding-top: 8px;
+        }
+
+        .step-content h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .step-content p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Pricing Highlight */
+        .pricing-highlight {
+            background: var(--bg-card);
+            border: 2px solid var(--accent-secondary);
+            border-radius: 24px;
+            padding: 50px;
+            text-align: center;
+            max-width: 800px;
+            margin: 60px auto 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-highlight::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+        }
+
+        .pricing-highlight h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .pricing-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .pricing-point {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            justify-content: center;
+            color: var(--text-secondary);
+        }
+
+        .pricing-point::before {
+            content: '✓';
+            color: var(--accent-secondary);
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        /* Testimonials */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.4s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-secondary);
+            box-shadow: 0 20px 60px var(--glow-green);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--bg-primary);
+        }
+
+        .testimonial-info h4 {
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+
+        .testimonial-info p {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .testimonial-text {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-rating {
+            color: var(--accent-secondary);
+            font-size: 20px;
+        }
+
+        /* Final CTA Section */
+        .final-cta {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 255, 148, 0.1));
+            border: 2px solid var(--accent-primary);
+            border-radius: 30px;
+            padding: 80px 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 30px;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .final-cta > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .final-cta h2 {
+            font-size: clamp(32px, 5vw, 48px);
+            margin-bottom: 24px;
+        }
+
+        .final-cta p {
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .final-cta .cta-primary {
+            font-size: 20px;
+            padding: 22px 50px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h3 {
+            font-size: 32px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .footer-section h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--accent-primary);
+            color: var(--bg-primary);
+            border-color: var(--accent-primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero-subtitle {
+                font-size: 18px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .workflow-step {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .step-number {
+                margin: 0 auto;
+            }
+
+            .final-cta {
+                padding: 50px 30px;
+            }
+
+            .pricing-highlight {
+                padding: 30px 20px;
+            }
+        }
+
+        /* Smooth reveal on scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Orbs -->
+    <div class="bg-gradient-orb orb-1"></div>
+    <div class="bg-gradient-orb orb-2"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">NEXADEV</div>
+                <a href="https://wa.me/6282324574281?text=Halo%20NEXADEV%2C%20saya%20tertarik%20dengan%20layanan%20website%20untuk%20UMKM" class="nav-cta">
+                    Konsultasi Gratis
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge fade-in-up">🚀 Solusi Digital untuk UMKM Indonesia</div>
+                <h1 class="fade-in-up delay-1">Website Profesional untuk UMKM yang Mau Naik Kelas</h1>
+                <p class="hero-subtitle fade-in-up delay-2">
+                    Kami bantu bisnis kamu terlihat profesional, dipercaya pelanggan, dan siap meningkatkan penjualan secara digital.
+                </p>
+                <a href="https://wa.me/6282324574281?text=Halo%20NEXADEV%2C%20saya%20ingin%20konsultasi%20tentang%20website%20untuk%20bisnis%20saya" class="cta-primary fade-in-up delay-3">
+                    <span class="cta-icon">💬</span>
+                    Konsultasi Gratis Sekarang
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust-section">
+        <div class="container">
+            <div class="trust-grid">
+                <div class="trust-item reveal">
+                    <div class="trust-icon">🎓</div>
+                    <h3>Certified Developer</h3>
+                    <p>Tim developer bersertifikat internasional dengan pengalaman nyata</p>
+                </div>
+                <div class="trust-item reveal">
+                    <div class="trust-icon">☁️</div>
+                    <h3>Alibaba Cloud & Claude Certified</h3>
+                    <p>Menggunakan teknologi cloud dan AI terkini untuk solusi optimal</p>
+                </div>
+                <div class="trust-item reveal">
+                    <div class="trust-icon">🇮🇩</div>
+                    <h3>Fokus UMKM Indonesia</h3>
+                    <p>Paham kebutuhan dan budget UMKM lokal Indonesia</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="masalah">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-badge">Masalah UMKM</span>
+                <h2 class="section-title">Kenapa Bisnis UMKM Sulit Berkembang?</h2>
+                <p class="section-description">
+                    Kami paham tantangan yang kamu hadapi. Inilah 3 masalah utama yang sering dialami UMKM:
+                </p>
+            </div>
+            <div class="problem-grid">
+                <div class="problem-card reveal">
+                    <div class="problem-number">01</div>
+                    <h3>Terlihat Tidak Profesional</h3>
+                    <p>Bisnis sudah jalan tapi masih pakai cara konvensional. Calon pelanggan ragu karena tidak ada kesan profesional.</p>
+                </div>
+                <div class="problem-card reveal">
+                    <div class="problem-number">02</div>
+                    <h3>Susah Dipercaya Online</h3>
+                    <p>Tanpa website resmi, pelanggan baru sulit percaya. Kompetitor yang punya website lebih mudah dapat kepercayaan.</p>
+                </div>
+                <div class="problem-card reveal">
+                    <div class="problem-number">03</div>
+                    <h3>Media Sosial Tidak Konversi</h3>
+                    <p>Sudah posting tiap hari tapi penjualan stagnan. Engagement tinggi tapi tidak menghasilkan transaksi nyata.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="layanan">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-badge">Solusi Kami</span>
+                <h2 class="section-title">Layanan yang Kami Tawarkan</h2>
+                <p class="section-description">
+                    Paket lengkap untuk membawa bisnis UMKM kamu ke level selanjutnya
+                </p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="service-header">
+                        <div class="service-icon">🌐</div>
+                        <div class="service-price">
+                            <div class="price-label">Mulai dari</div>
+                            <div class="price-value">Rp1,7jt</div>
+                        </div>
+                    </div>
+                    <h3>Company Profile Website</h3>
+                    <p class="service-description">
+                        Website profesional yang membuat bisnis kamu terlihat kredibel dan terpercaya di mata pelanggan.
+                    </p>
+                    <ul class="service-features">
+                        <li>Desain modern & responsive</li>
+                        <li>SEO basic (mudah ditemukan di Google)</li>
+                        <li>Konsultasi gratis sebelum mulai</li>
+                        <li>Free revisi 2x - 7x (sesuai paket)</li>
+                        <li>Hosting & domain 1 tahun</li>
+                        <li>Tutorial maintenance website</li>
+                    </ul>
+                    <button class="service-cta" onclick="window.location.href='https://wa.me/6282324574281?text=Halo%20NEXADEV%2C%20saya%20tertarik%20dengan%20paket%20Company%20Profile%20Website'">
+                        Pesan Sekarang
+                    </button>
+                </div>
+
+                <div class="service-card reveal">
+                    <div class="service-header">
+                        <div class="service-icon">📈</div>
+                        <div class="service-price">
+                            <div class="price-label">Mulai dari</div>
+                            <div class="price-value">Rp1,4jt/bln</div>
+                        </div>
+                    </div>
+                    <h3>Boost Penjualan Digital</h3>
+                    <p class="service-description">
+                        Social Media Specialist yang bantu kamu ubah followers jadi pembeli nyata melalui konten strategis.
+                    </p>
+                    <ul class="service-features">
+                        <li>Strategi konten jualan yang efektif</li>
+                        <li>Branding feed Instagram & TikTok</li>
+                        <li>Caption yang mengajak beli (CTA kuat)</li>
+                        <li>Design feed & story profesional</li>
+                        <li>Analisis performa bulanan</li>
+                        <li>Konsultasi strategi mingguan</li>
+                    </ul>
+                    <button class="service-cta" onclick="window.location.href='https://wa.me/6282324574281?text=Halo%20NEXADEV%2C%20saya%20tertarik%20dengan%20paket%20Boost%20Penjualan%20Digital'">
+                        Pesan Sekarang
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workflow Section -->
+    <section id="proses">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-badge">Cara Kerja</span>
+                <h2 class="section-title">Proses yang Mudah & Transparan</h2>
+                <p class="section-description">
+                    Dari konsultasi sampai launching, kami dampingi setiap langkahnya
+                </p>
+            </div>
+            <div class="workflow-container">
+                <div class="workflow-steps">
+                    <div class="workflow-step reveal">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Konsultasi Gratis</h3>
+                            <p>Kita diskusi dulu kebutuhan bisnis kamu, target market, dan budget. Tidak ada paksaan, santai aja!</p>
+                        </div>
+                    </div>
+                    <div class="workflow-step reveal">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Desain & Strategi</h3>
+                            <p>Tim kami bikin desain website atau strategi konten yang sesuai dengan brand dan target pasar kamu.</p>
+                        </div>
+                    </div>
+                    <div class="workflow-step reveal">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Development / Eksekusi</h3>
+                            <p>Kami kerjakan website atau konten digital kamu dengan profesional dan tepat waktu.</p>
+                        </div>
+                    </div>
+                    <div class="workflow-step reveal">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Revisi Sampai Puas</h3>
+                            <p>Kamu punya hak revisi sesuai paket. Kami pastikan hasilnya sesuai ekspektasi kamu.</p>
+                        </div>
+                    </div>
+                    <div class="workflow-step reveal">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3>Launch & Support</h3>
+                            <p>Website di-launch atau konten mulai running. Kami tetap support untuk maintenance dan pertanyaan.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pricing Highlight -->
+            <div class="pricing-highlight reveal">
+                <h3>💎 Harga Transparan, Tanpa Biaya Tersembunyi</h3>
+                <div class="pricing-points">
+                    <div class="pricing-point">Tidak ada biaya admin tambahan</div>
+                    <div class="pricing-point">Bisa diskusi sesuai budget UMKM</div>
+                    <div class="pricing-point">Gratis konsultasi awal</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimoni">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-badge">Testimoni</span>
+                <h2 class="section-title">Kata Mereka yang Sudah Percaya</h2>
+                <p class="section-description">
+                    UMKM yang sudah naik kelas bersama NEXADEV
+                </p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">RM</div>
+                        <div class="testimonial-info">
+                            <h4>Rina Marlina</h4>
+                            <p>Pemilik Kopi Santai Café</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        "Sejak punya website dari NEXADEV, pelanggan baru lebih percaya. Bahkan ada yang datang langsung dari Google Maps! Investasi yang worth it banget untuk café kecil seperti saya."
+                    </p>
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                </div>
+
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">BW</div>
+                        <div class="testimonial-info">
+                            <h4>Budi Wibowo</h4>
+                            <p>Owner Konveksi Berkah Jaya</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        "Tim NEXADEV sangat membantu! Mereka paham kebutuhan UMKM. Website kami jadi terlihat seperti perusahaan besar, padahal masih skala rumahan. Order meningkat 40% dalam 3 bulan!"
+                    </p>
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                </div>
+
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">SP</div>
+                        <div class="testimonial-info">
+                            <h4>Siti Pratiwi</h4>
+                            <p>Toko Busana Muslim "Aura"</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        "Layanan social media specialist dari NEXADEV bikin Instagram toko kami lebih rapi dan profesional. Engagement naik, yang penting closing juga meningkat! Recommended!"
+                    </p>
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section>
+        <div class="container">
+            <div class="final-cta reveal">
+                <h2>UMKM Kamu Layak Punya Website Profesional</h2>
+                <p>
+                    Jangan biarkan kompetitor unggul hanya karena mereka terlihat lebih profesional. 
+                    Saatnya bisnis kamu naik kelas!
+                </p>
+                <a href="https://wa.me/6281234567890?text=Halo%20NEXADEV%2C%20saya%20siap%20membawa%20bisnis%20saya%20ke%20level%20selanjutnya!" class="cta-primary">
+                    <span class="cta-icon">🚀</span>
+                    Mulai Perjalanan Digital Sekarang
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>NEXADEV</h3>
+                    <p>Partner digital terpercaya untuk UMKM Indonesia yang ingin berkembang dan bersaing di era digital.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Layanan</h4>
+                    <ul class="footer-links">
+                        <li><a href="#layanan">🌐 Company Profile Website</a></li>
+                        <li><a href="#layanan">📈 Digital Marketing</a></li>
+                        <li><a href="#layanan">📱 Social Media Management</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Kontak</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://wa.me/6282324574281">💬 WhatsApp: +62 823-2457-4281</a></li>
+                        <li><a href="mailto:mrifazzaky@gmail.com">📧 Email: mrifazzaky@gmail.com</a></li>
+                    </ul>
+                    <div class="social-links" style="margin-top: 20px;">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📷</a>
+                        <a href="#" class="social-link">🎵</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 NEXADEV. All rights reserved. Made with ❤️ for Indonesian SMEs</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth reveal on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
